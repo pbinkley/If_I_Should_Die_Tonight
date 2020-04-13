@@ -23,5 +23,10 @@
   <%= @item.page %>
 </p>
  
+<p>
+  <strong>Thumbnail:</strong>
+  <%= image_tag(@item.thumbnail) %>
+</p>
+
 <%= link_to 'Edit', edit_item_path(@item) %> |
 <%= link_to 'Back', items_path %>

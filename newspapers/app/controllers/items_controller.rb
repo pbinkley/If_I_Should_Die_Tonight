@@ -17,6 +17,7 @@ class ItemsController < ApplicationController
 
   def create
     @item = Item.new(item_params)
+   # @item.thumbnail.attach(item_params[:thumbnail])
 
     if @item.save
       redirect_to @item
@@ -45,6 +46,6 @@ class ItemsController < ApplicationController
   private
 
   def item_params
-    params.require(:item).permit(:filename, :publication, :location, :date, :page, :url)
+    params.require(:item).permit(:filename, :publication, :location, :date, :page, :url, :thumbnail)
   end
 end
