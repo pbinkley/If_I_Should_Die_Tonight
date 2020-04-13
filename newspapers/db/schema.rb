@@ -10,11 +10,15 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_04_13_033807) do
+ActiveRecord::Schema.define(version: 2020_04_13_163623) do
 
   create_table "items", force: :cascade do |t|
-    t.string "title"
-    t.text "text"
+    t.string "filename"
+    t.string "publication"
+    t.string "location"
+    t.date "date"
+    t.integer "page"
+    t.string "url"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end

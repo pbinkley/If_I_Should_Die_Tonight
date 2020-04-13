@@ -45,6 +45,6 @@ class ItemsController < ApplicationController
   private
 
   def item_params
-    params.require(:item).permit(:title, :text)
+    params.require(:item).permit(:filename, :publication, :location, :date, :page, :url)
   end
 end

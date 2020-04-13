@@ -1,12 +1,27 @@
 <p>
-  <strong>Title:</strong>
-  <%= @item.title %>
+  <strong>Filename:</strong>
+  <%= link_to @item.filename, @item.url %>
 </p>
  
 <p>
-  <strong>Text:</strong>
-  <%= @item.text %>
+  <strong>Publication:</strong>
+  <%= @item.publication %>
 </p>
 
+<p>
+  <strong>Location:</strong>
+  <%= @item.location %>
+</p>
+ 
+<p>
+  <strong>Date:</strong>
+  <%= @item.date %>
+</p>
+
+<p>
+  <strong>Page:</strong>
+  <%= @item.page %>
+</p>
+ 
 <%= link_to 'Edit', edit_item_path(@item) %> |
 <%= link_to 'Back', items_path %>
