@@ -23,6 +23,10 @@
         <%= link_to 'No thumbnail', item.url %>        
         <% end -%></td>
       <td>
+        <%= form_with model: item, remote: true do |form| %>
+          <%= select_tag(:category_id, options_for_select(@categories), name: 'item[category_id]', prompt: "Select one!", onchange: 'this.form.submit();') %>
+        <% end %>
+
         <% if item.category_id %>
           <%= link_to Category.find(item.category_id).name, category_path(item.category_id) %>
         <% end %>

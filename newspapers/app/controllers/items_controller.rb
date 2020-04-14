@@ -1,6 +1,7 @@
 class ItemsController < ApplicationController
   def index
     @items = Item.paginate(page: params[:page], per_page: 50)
+    @categories = Category.all.map { |c| [c.name, c.id] }
   end
 
   def charts
@@ -9,6 +10,7 @@ class ItemsController < ApplicationController
 
   def show
     @item = Item.find(params[:id])
+    @categories = Category.all.map { |c| [c.name, c.id] }
   end
 
   def new
@@ -46,7 +48,7 @@ class ItemsController < ApplicationController
 
   def update
     @item = Item.find(params[:id])
-    @item.category_id = params[:category_id]
+    # @item.category_id = params[:category_id]
 
     if @item.update(item_params)
       redirect_to @item
@@ -65,6 +67,6 @@ class ItemsController < ApplicationController
   private
 
   def item_params
-    params.require(:item).permit(:filename, :publication, :location, :date, :page, :url, :thumbnail)
+    params.require(:item).permit(:filename, :publication, :location, :date, :page, :url, :thumbnail, :category_id)
   end
 end

@@ -4,6 +4,11 @@
 </p>
  
 <p>
+  <strong>Category:</strong>
+  <%= @categories.select { |c| c[1] == @item.category_id }.first.first %>
+</p>
+
+<p>
   <strong>Publication:</strong>
   <%= @item.publication %>
 </p>
