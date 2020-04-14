@@ -21,7 +21,7 @@
  
   <p>
     <%= form.label :category %><br>
-    <%= select_tag(:category_id, options_for_select(@categories), prompt: "Select one!") %>
+    <%= select_tag('item[category_id]', options_for_select(@categories, selected: @item.category_id)) %>
   </p>
 
   <p>
