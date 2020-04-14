@@ -7,6 +7,7 @@
 <table>
   <tr>
     <th>Thumbnail</th>
+    <th>Category</th>
     <th>Publication</th>
     <th>Location</th>
     <th>Date</th>
@@ -21,6 +22,11 @@
         <% else %>
         <%= link_to 'No thumbnail', item.url %>        
         <% end -%></td>
+      <td>
+        <% if item.category_id %>
+          <%= link_to Category.find(item.category_id).name, category_path(item.category_id) %>
+        <% end %>
+      </td>
       <td><%= item.publication %></td>
       <td><%= item.location %></td>
       <td><%= item.date %></td>

@@ -55,6 +55,7 @@ def item_ingest(item_data, index, csv_directory)
     i.date = item_data[:date]
     i.page = item_data[:page]
     i.url = item_data[:url]
+    i.category_id = 1
     i.save!
   end
 
@@ -66,7 +67,7 @@ def item_ingest(item_data, index, csv_directory)
   )
 
   sleep(1)
-  
+
   item
 rescue StandardError => e
   log 'ERROR: Ingest of item failed! The following error occured:'
