@@ -3,6 +3,10 @@ class ItemsController < ApplicationController
     @items = Item.paginate(page: params[:page], per_page: 50)
   end
 
+  def charts
+    @items = Item.where('location = "Buffalo, New York" OR location = "San Francisco, California"')
+  end
+
   def show
     @item = Item.find(params[:id])
   end
