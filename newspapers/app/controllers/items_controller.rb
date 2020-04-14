@@ -26,18 +26,6 @@ class ItemsController < ApplicationController
 
   def create
     @item = Item.new(item_params)
-    # @item.thumbnail.attach(item_params[:thumbnail])
-
-    @item.category_id = params[:category_id]
-    respond_to do |format|
-      if @item.save
-        format.html { redirect_to @item, notice: 'Item was successfully created.' }
-        format.json { render :show, status: :created, location: @item }
-      else
-        format.html { render :new }
-        format.json { render json: @item.errors, status: :unprocessable_entity }
-      end
-    end
 
     if @item.save
       redirect_to @item
@@ -48,12 +36,15 @@ class ItemsController < ApplicationController
 
   def update
     @item = Item.find(params[:id])
-    # @item.category_id = params[:category_id]
+    @item.update!(item_params)
 
-    if @item.update(item_params)
-      redirect_to @item
+    if @item.save
+      format.html { redirect_to @item }
+      format.js   {}
+      format.json { render :show, status: :ok, location: @item }
     else
-      render 'edit'
+      format.html { render 'edit' }
+      format.json { render json: @comment.errors, status: :unprocessable_entity }
     end
   end
 
