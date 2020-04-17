@@ -1,0 +1,12 @@
+<%  if @item.errors.any? %>
+    <%# TODO: handle errors %>
+    <%# NOTE ITEM STEP 4: This removes any error messages that were previously generated. %>
+    document.querySelector('#error_explanation') ? document.querySelector('#error_explanation').remove() : null ;
+    <%# NOTE ITEM STEP 4: This selects the new item `<form>` in `app/views/posts/new.html.erb` and `app/views/posts/edit.html.erb` and dynamically injects the `app/views/shared/_validation-messages.html.erb` partial. %>
+    document.querySelector('#item_form').insertAdjacentHTML('afterbegin', '<%= escape_javascript(render "shared/validation-messages", object: @item) %>');
+<%  else %>
+    <%# NOTE ITEM STEP 4: This removes any error messages that were previously generated. %>
+    document.querySelector('#error_explanation') ? document.querySelector('#error_explanation').remove() : null ;
+    <%# NOTE ITEM STEP 4: This searches for the currently selected item in `app/views/posts/new.html.erb` and `app/views/posts/edit.html.erb`, and unselects them. %>
+    <%# document.querySelector("select#post_item_id_#{@item.id} option[selected='selected']") ? document.querySelector("select#post_item_id option[selected='selected']").removeAttribute('selected') : null ; %>
+<%  end %>

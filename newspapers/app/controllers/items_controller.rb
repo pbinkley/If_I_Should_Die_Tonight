@@ -41,13 +41,13 @@ class ItemsController < ApplicationController
     if @item.save
       respond_to do |format|
         format.html { redirect_to @item }
-        format.js   {}
+        format.js
         format.json { render :show, status: :ok, location: @item }
       end
     else
       respond_to do |format|
-        format.html { render 'edit' }
-        format.json { render json: @comment.errors, status: :unprocessable_entity }
+        format.html { render :edit }
+        format.json { render json: @item.errors, status: :unprocessable_entity }
       end
     end
   end
