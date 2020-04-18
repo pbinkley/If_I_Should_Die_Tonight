@@ -5,7 +5,7 @@ class ItemsController < ApplicationController
   end
 
   def charts
-    @items = Item.where('location = "Buffalo, New York" OR location = "San Francisco, California"')
+    @items = Item.all
   end
 
   def show
