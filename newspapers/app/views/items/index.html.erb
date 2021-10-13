@@ -6,6 +6,7 @@
 
 <table>
   <tr>
+    <th>ID</th>
     <th>Thumbnail</th>
     <th>Category</th>
     <th>Publication</th>
@@ -17,6 +18,7 @@
  
   <% @items.each do |item| %>
     <tr>
+      <td><%= item.id %></td>
       <td><% if item.thumbnail.attached? %>
         <%= link_to image_tag(item.thumbnail), item.url %>
         <% else %>
@@ -44,4 +46,7 @@
   <% end %>
 </table>
 
+<%= will_paginate @items %>
+
+<%= link_to 'Charts', items_charts_path %>
 <%= link_to 'Back', items_path %>

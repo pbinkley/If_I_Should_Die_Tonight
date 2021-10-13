@@ -38,16 +38,13 @@ class ItemsController < ApplicationController
     @item = Item.find(params[:id])
     @item.update!(item_params)
 
-    if @item.save
-      respond_to do |format|
+    respond_to do |format|
+      if @item.save
         format.html { redirect_to @item }
         format.js
-        format.json { render :show, status: :ok, location: @item }
-      end
-    else
-      respond_to do |format|
+      else
         format.html { render :edit }
-        format.json { render json: @item.errors, status: :unprocessable_entity }
+        format.js
       end
     end
   end

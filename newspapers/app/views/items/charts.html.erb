@@ -2,4 +2,6 @@
 
 <%= column_chart @items.all.joins(:category).group("categories.name").group_by_year(:date).count, stacked: true %>
 
+<%= line_chart @items.where('category_id == 2 OR category_id == 3').joins(:category).group("categories.name").group_by_year(:date).count %>
+
 <%= link_to 'Back', items_path %>
